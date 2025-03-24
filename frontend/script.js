@@ -75,7 +75,7 @@ const processMessage = ({data}) => {
 
     scrollScreen();
 
-    console.log(data);
+
     
 };
 
@@ -97,8 +97,6 @@ const handleSumit = (event) => {
 
     //quando receber uma mensagem do servidor, chama a função processMessage
     websocket.onmessage = processMessage;
-
-    console.log(user);
 
 }
 
