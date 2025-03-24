@@ -93,7 +93,7 @@ const handleSumit = (event) => {
     chat.style.display = 'flex';
 
     //vai conectar com o servidor
-    websocket = new WebSocket(`ws://localhost:8080`);
+    websocket = new WebSocket(`wss://devchat-rbkc.onrender.com`);
 
     //quando receber uma mensagem do servidor, chama a função processMessage
     websocket.onmessage = processMessage;
