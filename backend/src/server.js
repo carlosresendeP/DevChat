@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const wss = new WebSocketServer({ port: process.env.PORT || 8080 });
-console.log('SERVIDOR RUNNING ON PORT 8080'); 
+
 
 // Evento disparado ao estabelecer uma conexão com um cliente
 wss.on('connection', (ws) => {
