@@ -1,4 +1,5 @@
 const title = document.querySelector('.title');
+const notification = document.querySelector('.userConnect');
 
 const login = document.querySelector('.login');
 const loginForm = document.querySelector('.login_form');
@@ -63,12 +64,34 @@ const scrollScreen = () => {
     });
 }
 
+//cria o popup de mensagem
+/*const popup = (data)=>{
+    const {userId, userName} = JSON.parse(data);
+
+    if (userId === user.id) {
+        notification.classList.add('active');
+        notification.appendChild(document.createTextNode('Você entrou na sala de chat'));
+        setTimeout(()=>{
+            notification.classList.remove('active');
+        }, 3000);
+    }else{
+        notification.classList.add('active');
+        notification.appendChild(document.createTextNode(`${userName} entrou na sala de chat`));
+        setTimeout(()=>{
+            notification.classList.remove('active');
+        }, 3000);
+    }
+
+    console.log(data);
+
+    return popup;
+}*/
+
 //função que processa a mensagem recebida do servidor
 const processMessage = ({data}) => {
     const {userId, userName, userColor, content} = JSON.parse(data);
 
     const message = userId === user.id ? createMessageSelfElement(content) : createMessageOtherElement(content, userName, userColor);
-
 
     //o element é adicionado ao chatMessage
     chatMessage.appendChild(message);
@@ -82,6 +105,8 @@ const processMessage = ({data}) => {
 //função que envia a mensagem para o servidor
 const handleSumit = (event) => {
     event.preventDefault();
+
+    //popup();
 
     title.style.display = 'none';
 
@@ -97,6 +122,7 @@ const handleSumit = (event) => {
 
     //quando receber uma mensagem do servidor, chama a função processMessage
     websocket.onmessage = processMessage;
+
 
 }
 
